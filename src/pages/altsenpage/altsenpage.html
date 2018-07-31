@@ -1,0 +1,32 @@
+
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Alterar Senha</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+<ion-content padding>
+    <ion-content padding>
+        <ion-item>
+          <ion-label floating>Nome</ion-label>
+          <ion-input type="text" [(ngModel)]="usuname"></ion-input>
+       </ion-item>
+      
+       <ion-item>
+          <ion-label floating>Senha Nova</ion-label>
+          <ion-input type="password" [(ngModel)]="usupassword"></ion-input>
+       </ion-item>
+     
+       <ion-item>
+         <ion-label floating>Senha Nova Confirma</ion-label>
+         <ion-input type="password" [(ngModel)]="usupasswordconf"></ion-input>
+      </ion-item>
+
+      <p>
+          <button ion-button full (click)="AltSenha()">Confirma Alteracao de Senha</button>
+      </p>
+
+    </ion-content>

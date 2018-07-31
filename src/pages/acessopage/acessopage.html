@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Entrada</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+     <ion-label floating>Email</ion-label>
+     <ion-input type="text" [(ngModel)]="usuemail"></ion-input>
+  </ion-item>
+  <ion-item>
+      <ion-label floating>Senha</ion-label>
+      <ion-input type="password" [(ngModel)]="usupassword"></ion-input>
+   </ion-item>
+   <p>
+     <button ion-button full (click)="acessar()">Acessar</button>
+   </p>
+   <p>
+      <button ion-button full (click)="cadusu()">Cadastar Usuario</button>
+   </p>
+</ion-content>
