@@ -15,7 +15,9 @@
 
  <ion-item>
   <ion-label floating>Data Nascimento</ion-label>
-  <ion-input type="text" [(ngModel)]="usudatnasc"></ion-input>
+  <ion-datetime displayFormat='DD/MM/YYYY' [(ngModel)]="usudatnasc" doneText="Feito"
+                cancelText="Cancelar" [max]="maxDate">
+  </ion-datetime>
  </ion-item>
 
  <ion-item>
@@ -38,7 +40,13 @@
     <ion-input type="password" [(ngModel)]="usupasswordconf"></ion-input>
  </ion-item>
 
+ <ion-item>
+  <ion-label floating>Telefone</ion-label>
+  <ion-input type="text" [(ngModel)]="usutelefone"></ion-input>
+</ion-item>
+
+
   <p>
-    <button ion-button full (click)="CadUsu()">Confirma Cadastro</button>
+    <button ion-button full (click)="salvaUsu()">Confirma Cadastro</button>
   </p>
 </ion-content>
