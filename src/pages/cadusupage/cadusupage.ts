@@ -20,8 +20,9 @@ export class CadUsuPage {
   public usupasswordconf: string;  
   public usutelefone: string;
   public maxDate: string;
-  public emailDif: boolean;
-  public passwDif: boolean;
+  public emailIgual: boolean;
+  public passwIgual: boolean;
+  public retorno : any;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -47,56 +48,54 @@ export class CadUsuPage {
 
     let toast = this.toastCtrl.create({duration: 3000, position: 'middle'});
     console.log(this.usuemail + ' ' + this.usuemailconf);
-    this.passwDif = false;
+    this.passwIgual = true;
     if (this.usupassword !== this.usupasswordconf) {
-         this.passwDif = true;
+         this.passwIgual = false;
     };
  
-    this.emailDif = false;
+    this.emailIgual = true;
     if (this.usuemail !== this.usuemailconf) {
-         this.emailDif = true;
+         this.emailIgual = false;
     };
       
-    if (this.emailDif && this.passwDif) {     
-      console.log("Emails e Passwords diferentes, favor digitar novamente ");
-      toast.setMessage("Emails e Passwords Diferentes, favor digitar novamente.");
-      toast.present(); 
-    } 
-    if (this.emailDif) {     
+    if (!this.emailIgual) {     
          console.log("Emails diferentes, favor digitar novamente ");
          toast.setMessage("Emails Diferentes, favor digitar novamente.");
          toast.present(); 
     } 
 
-    if (this.passwDif) {     
+    if (!this.passwIgual) {     
       console.log("Passwords diferentes, favor digitar novamente ");
       toast.setMessage("Passwords Diferentes, favor digitar novamente.");
       toast.present(); 
     } 
-    
-    this.viewCtrl.dismiss(review);
-    this.navCtrl.push(AcessoPage); 
-    
-    //var resposta = this.usuProvider.getEmail(review.email);
-    //c//onsole.log(typeof resposta == "undefined")
-    //console.log(typeof resposta === "undefined")
-    //console.log(typeof resposta !== "undefined")
-    
-    /*let promiseEmail: Promise<any>;
-    promiseEmail =  this.usuProvider.getEmail(this.usuemail)
-    Promise.all ([promiseEmail])
-      .then(() => {
-        // this.emailExiste = true;
-         console.log("Retornei do provider 1 ");
-         toast.setMessage("Email já cadastrado");
-         toast.present(); 
-      }) .catch(() => {
-         console.log("Cadastrando usuário ");
-         console.log("Retornei do provider 2 ");
-         toast.setMessage("Cadastrando Usuário");
-         toast.present(); 
-         this.viewCtrl.dismiss(review);
-         this.navCtrl.push(AcessoPage); 
-    })*/
+    if (!this.emailIgual && !this.passwIgual) {     
+      console.log("Emails e Passwords diferentes, favor digitar novamente ");
+      toast.setMessage("Emails e Passwords Diferentes, favor digitar novamente.");
+      toast.present(); 
+    } 
+    if (this.emailIgual && this.passwIgual) {     
+        if(review) {
+//             this.usuProvider.getEmail(review.email)
+//             .then((result: any) => {
+//                  console.log("result: " + result.nome + " ")
+//                  console.log(result == null)
+//                  toast.setMessage("Email já cadastrado em outroxxx usuario.");
+//                  toast.present();     
+//            })
+//            .catch((error: any) => {
+                  this.usuProvider.createUsuario(review)
+                  .then((result: any) => {
+                    toast.setMessage("Usuário cadastrado com sucesso.");
+                    toast.present();          
+                    this.navCtrl.push(AcessoPage); 
+                  })
+                  .catch((error: any) => {
+                    toast.setMessage("Erro no cadastramento do usuário.");
+                    toast.present();     
+                  })
+//            })
+          } 
+    }
   }
 }

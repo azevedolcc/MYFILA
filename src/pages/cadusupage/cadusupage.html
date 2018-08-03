@@ -8,7 +8,15 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
+  <ion-list>
+    <ion-item-sliding *ngFor="let r of retorno">
+      <button ion-item (click)="editProduct(hero._id)">
+        <h1 class="name"> {{ r.name }}</h1>
+      </button>
+    </ion-item-sliding>
+</ion-list> 
+
+ <ion-item>
     <ion-label floating>Nome</ion-label>
     <ion-input type="text" [(ngModel)]="usuname"></ion-input>
  </ion-item>
@@ -44,9 +52,9 @@
   <ion-label floating>Telefone</ion-label>
   <ion-input type="text" [(ngModel)]="usutelefone"></ion-input>
 </ion-item>
-
-
+  
   <p>
     <button ion-button full (click)="salvaUsu()">Confirma Cadastro</button>
   </p>
+
 </ion-content>

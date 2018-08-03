@@ -48,31 +48,7 @@ export class AcessoPage {
   //}
 
   cadUsu(){
- 
-    let toast = this.toastCtrl.create({duration: 3000, position: 'middle' });
-    let modal = this.modalCtrl.create(CadUsuPage);
- 
-    modal.onDidDismiss(review => {
-      console.log("acessopage: " + review.nome + " " + review.email );
-    if(review) {
-        this.usuProvider.createUsuario(review)
-         .then((result: any) => {
-           toast.setMessage("Usuário cadastrado com sucesso.");
-           toast.present();          
-         })
-         .catch((error: any) => {
-           console.log("Erro cad: " + error.message + "/" + error.code + "/" + error.status + "/" + error.data);
-           toast.setMessage("Erro no cadastramento do usuário." + error.status);
-           toast.present();     
-           //this.navCtrl.push(CadUsuPage);
-         })
-        console.log("Voltei: " + review.nome );
-    } 
-           
-    });
- 
-    modal.present();
- 
+     this.navCtrl.push(CadUsuPage);
   }
 
 }
