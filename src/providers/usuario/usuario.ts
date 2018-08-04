@@ -32,6 +32,7 @@ export class UsuarioProvider {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json')
+      
       this.http.post('http://localhost:3000/usuario', JSON.stringify(review), { headers: headers })
            .subscribe(result => {
             resolve(result.json());
