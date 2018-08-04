@@ -15,7 +15,8 @@ export class UsuarioProvider {
   }
 
   getEmail(email: string) {
-    return new Promise((resolve, reject) => {
+    
+    /*return new Promise((resolve, reject) => {
       this.url = 'http://localhost:3000/usuario_email/' + email
       this.http.get(this.url)
            .subscribe(result => {
@@ -24,7 +25,23 @@ export class UsuarioProvider {
       (error) => {
             reject(error.json());
       })       
-    });     
+    }); */
+    
+    return new Promise((resolve, reject)  => {
+      this.url = 'http://localhost:3000/usuario_email/' + email
+      this.http.get(this.url)
+        .map(res => res.json())
+        .subscribe(data => {
+          this.data = data;
+          //console.log('Data prov email: ' + this.data)
+          resolve(this.data);
+        }, 
+        (error) => {
+          reject(error.json());
+        }    
+        );
+    });
+
   };
 
   createUsuario(review) {
@@ -59,7 +76,7 @@ export class UsuarioProvider {
           resolve(result.json());
       },
       (error) => {
-         reject(error.json());
+          reject(error.json());
       })       
     });     
   }
