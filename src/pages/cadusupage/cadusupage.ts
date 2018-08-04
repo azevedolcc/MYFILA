@@ -76,14 +76,26 @@ export class CadUsuPage {
     } 
     if (this.emailIgual && this.passwIgual) {     
         if(review) {
-//             this.usuProvider.getEmail(review.email)
-//             .then((result: any) => {
-//                  console.log("result: " + result.nome + " ")
-//                  console.log(result == null)
-//                  toast.setMessage("Email já cadastrado em outroxxx usuario.");
-//                  toast.present();     
-//            })
-//            .catch((error: any) => {
+             this.usuProvider.getEmail(review.email)
+             .then((result: any) => {
+                  if (result.length != 0) {
+                      toast.setMessage("Email já cadastrado em outroxxx usuario.");
+                      toast.present();
+                  } else {
+                    console.log(result.length)
+                    this.usuProvider.createUsuario(review)
+                    .then((result: any) => {
+                      toast.setMessage("Usuário cadastrado com sucesso.");
+                      toast.present();          
+                      //this.navCtrl.push(AcessoPage); 
+                    })
+                    .catch((error: any) => {
+                      toast.setMessage("Erro no cadastramento do usuário.");
+                      toast.present();     
+                    })
+                  }
+            })
+            .catch((error: any) => {
                   this.usuProvider.createUsuario(review)
                   .then((result: any) => {
                     toast.setMessage("Usuário cadastrado com sucesso.");
@@ -94,7 +106,7 @@ export class CadUsuPage {
                     toast.setMessage("Erro no cadastramento do usuário.");
                     toast.present();     
                   })
-//            })
+            })
           } 
     }
   }

@@ -7,14 +7,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-list>
-    <ion-item-sliding *ngFor="let r of retorno">
-      <button ion-item (click)="editProduct(hero._id)">
-        <h1 class="name"> {{ r.name }}</h1>
-      </button>
-    </ion-item-sliding>
-</ion-list> 
+<ion-content>
 
  <ion-item>
     <ion-label floating>Nome</ion-label>

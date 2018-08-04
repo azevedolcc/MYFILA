@@ -8,7 +8,6 @@ export class UsuarioProvider {
 
   public data: any;
   public url: any;
-  public result: any;
   public usuNCad: boolean;
 
   constructor(public http: Http) {
@@ -16,38 +15,28 @@ export class UsuarioProvider {
   }
 
   getEmail(email: string) {
-    
     return new Promise((resolve, reject) => {
-
       this.url = 'http://localhost:3000/usuario_email/' + email
       this.http.get(this.url)
-           .map(res => res.json())
            .subscribe(result => {
-             this.result=result
-            console.log("Get Email: " + this.result) 
-            resolve(this.result);
+            resolve(result.json());
       },
       (error) => {
-            console.log("Error json: " + error.json());
             reject(error.json());
       })       
     });     
   };
 
   createUsuario(review) {
- 
     console.log("Review Promise: " + JSON.stringify(review));
-
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json')
       this.http.post('http://localhost:3000/usuario', JSON.stringify(review), { headers: headers })
            .subscribe(result => {
-            console.log("Resultado json: " + result.json());
             resolve(result.json());
       },
       (error) => {
-            console.log("Error json: " + error.json());
             reject(error.json());
       })       
     });     
