@@ -12,6 +12,8 @@ import { AltSenPage } from '../pages/altsenpage/altsenpage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CadUsuPage } from '../pages/cadusupage/cadusupage';
+import { AltCadasPage } from '../pages/altcadaspage/altcadaspage';
+
 import { UsuarioProvider } from '../providers/usuario/usuario';
 
 @NgModule({
@@ -20,8 +22,8 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
     HomePage,
     ListPage,
     CadUsuPage,
-    AltSenPage
-   
+    AltSenPage,
+    AltCadasPage
   ],
   imports: [
     BrowserModule,
@@ -34,8 +36,8 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
     HomePage,
     ListPage,
     CadUsuPage,
-    AltSenPage
- 
+    AltSenPage,
+    AltCadasPage
   ],
   providers: [
     StatusBar,

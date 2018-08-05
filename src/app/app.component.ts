@@ -4,8 +4,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { CadUsuPage } from '../pages/cadusupage/cadusupage';
+//import { CadUsuPage } from '../pages/cadusupage/cadusupage';
 import { AltSenPage } from '../pages/altsenpage/altsenpage';
+import { AltCadasPage } from '../pages/altcadaspage/altcadaspage';
 
 @Component({
   templateUrl: 'app.html'
@@ -25,7 +26,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Inicio', component: HomePage },
-      { title: 'Cadastro de Usuario', component: CadUsuPage },
+      { title: 'Alterar Cadastro', component: AltCadasPage },
       { title: 'Alterar Senha', component: AltSenPage }
     ];
 

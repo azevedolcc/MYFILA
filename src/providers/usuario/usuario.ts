@@ -63,6 +63,24 @@ export class UsuarioProvider {
     });     
    };
 
+   alterarSenha(review) {
+    console.log("Review Metodo put: " + JSON.stringify(review));
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json')
+      this.url = 'http://localhost:3000/usuario/' + review.id
+      this.http.put( this.url, JSON.stringify(review), { headers: headers })
+           .subscribe(result => {
+            resolve(result.json());
+      },
+      (error) => {
+            reject(error.json());
+      })       
+    });     
+   };
+
+   
+
   loginUsuario(email: string, password: string) {
     console.log("Login email: " + email + " Passw: " + password)
     return new Promise((resolve, reject) => {

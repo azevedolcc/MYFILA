@@ -1,0 +1,44 @@
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Alterar Cadastro</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label floating>Nome</ion-label>
+    <ion-input type="text" [(ngModel)]="usuname"></ion-input>
+ </ion-item>
+
+ <ion-item>
+  <ion-label floating>Data Nascimento</ion-label>
+  <ion-datetime displayFormat='DD/MM/YYYY' [(ngModel)]="usudatnasc" doneText="Feito"
+                cancelText="Cancelar" [max]="maxDate">
+  </ion-datetime>
+ </ion-item>
+
+ <ion-item>
+    <ion-label floating>Email</ion-label>
+    <ion-input type="text" [(ngModel)]="usuemail"></ion-input>
+ </ion-item>
+
+ <ion-item>
+  <ion-label floating>Email Confirma</ion-label>
+  <ion-input type="text" [(ngModel)]="usuemailconf"></ion-input>
+ </ion-item>
+
+ <ion-item>
+  <ion-label floating>Telefone</ion-label>
+  <ion-input type="text" [(ngModel)]="usutelefone"></ion-input>
+ </ion-item>
+  
+  <p>
+    <button ion-button full round color="secondary" (click)="salvaAltCadas()">Confirma Cadastro</button>
+  </p>
+
+</ion-content>
