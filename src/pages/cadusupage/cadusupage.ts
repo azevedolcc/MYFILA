@@ -87,7 +87,7 @@ export class CadUsuPage {
                     .then((result: any) => {
                       toast.setMessage("Usuário cadastrado com sucesso.");
                       toast.present();          
-                      //this.navCtrl.push(AcessoPage); 
+                      this.navCtrl.push(AcessoPage); 
                     })
                     .catch((error: any) => {
                       toast.setMessage("Erro no cadastramento do usuário.");

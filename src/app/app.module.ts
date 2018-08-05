@@ -44,4 +44,10 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
     UsuarioProvider
   ]
 })
-export class AppModule {}
+export class AppModule { 
+  private static url: string = "http://199.169.0.9/ws/ListarEstados.ashx";
+
+  static getUrl(){
+    return this.url;
+  }
+}

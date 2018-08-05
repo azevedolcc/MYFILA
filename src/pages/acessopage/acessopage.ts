@@ -34,7 +34,7 @@ export class AcessoPage {
     console.log('ionViewDidLoad AcessoPage');
   }
 
-  acessar(usuemail, usupassword) {
+  acessar() {
 
     let toast = this.toastCtrl.create({duration: 3000, position: 'middle'});
 
@@ -49,6 +49,9 @@ export class AcessoPage {
                     toast.setMessage("Encontramos problemas no seu login. Verifique a senha e tente novamente.");
                     toast.present(); 
               } else {
+                    this.usuProvider.nomeGobal = this.usuario[0].nome;
+                    this.usuProvider.emailGobal = this.usuario[0].email;
+                    console.log("Gobal: " + this.usuProvider.nomeGobal)
                     toast.setMessage("Usuário logado com sucesso.");
                     toast.present();
                     this.navCtrl.setRoot(HomePage);

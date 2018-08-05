@@ -8,25 +8,28 @@
     </ion-navbar>
   </ion-header>
   
-<ion-content padding>
-    <ion-content padding>
-        <ion-item>
-          <ion-label floating>Nome</ion-label>
-          <ion-input type="text" [(ngModel)]="usuname"></ion-input>
-       </ion-item>
-      
-       <ion-item>
-          <ion-label floating>Senha Nova</ion-label>
-          <ion-input type="password" [(ngModel)]="usupassword"></ion-input>
-       </ion-item>
-     
-       <ion-item>
-         <ion-label floating>Senha Nova Confirma</ion-label>
-         <ion-input type="password" [(ngModel)]="usupasswordconf"></ion-input>
+  <ion-content padding>
+      <ion-item>
+        {{ usuname }} 
       </ion-item>
 
-      <p>
-          <button ion-button full (click)="AltSenha()">Confirma Alteracao de Senha</button>
-      </p>
+      <ion-item>
+      <ion-label floating>Senha Atual</ion-label>
+      <ion-input type="password" [(ngModel)]="usupasswordatu"></ion-input>
+      </ion-item>
 
-    </ion-content>
+      <ion-item>
+        <ion-label floating>Senha Nova</ion-label>
+        <ion-input type="password" [(ngModel)]="usupasswordnova"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label floating>Senha Nova Confirma</ion-label>
+        <ion-input type="password" [(ngModel)]="usupasswordconf"></ion-input>
+    </ion-item>
+
+    <p>
+        <button ion-button full (click)="AltSenha()">Confirma Alteracao de Senha</button>
+    </p>
+
+  </ion-content>

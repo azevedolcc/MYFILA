@@ -6,6 +6,9 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UsuarioProvider {
 
+  public nomeGobal: string;
+  public emailGobal: string;
+  
   public data: any;
   public url: any;
   public usuNCad: boolean;
