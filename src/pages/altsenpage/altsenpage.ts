@@ -27,7 +27,7 @@ export class AltSenPage {
               private usuProvider: UsuarioProvider) {
               this.usuname = this.usuProvider.nomeGlobal
               this.usuemail = this.usuProvider.emailGlobal
-              console.log("Gobal Altsenha: " + this.usuname + " " + this.usuemail)
+              console.log("Global Altsenha: " + this.usuname + " " + this.usuemail)
   }
 
   ionViewDidLoad() {

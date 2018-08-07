@@ -57,8 +57,15 @@ export class AcessoPage {
               }       
           })
           .catch((error: any) => {
+            console.log(typeof this.usuemail == "undefined")
+            console.log(this.usuemail)
+              if (typeof this.usuemail == "undefined") {
+                   toast.setMessage("Email e senha devem ser preenchidos.");
+                   toast.present(); 
+              } else {
                    toast.setMessage("Não foi encontrado usuário com login " + this.usuemail);
-                   toast.present();          
+                   toast.present();  
+              }        
           })
     }
   }

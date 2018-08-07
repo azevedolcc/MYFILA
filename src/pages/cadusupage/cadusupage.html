@@ -20,7 +20,7 @@
                 cancelText="Cancelar" [max]="maxDate">
   </ion-datetime>
  </ion-item>
-
+ 
  <ion-item>
     <ion-label floating>Email</ion-label>
     <ion-input type="text" [(ngModel)]="usuemail"></ion-input>
@@ -45,6 +45,7 @@
     <ion-label floating>Telefone</ion-label>
     <ion-input type="text" maxlength="11" pattern="([0-9]{11})" [(ngModel)]="usutelefone"></ion-input>
  </ion-item>
+ <p> </p>
  <div class="center">
     <button ion-button round color="secondary" style="width: 230px; height: 40px" (click)="salvaUsu()">Confirmar Cadastro</button>
  </div>

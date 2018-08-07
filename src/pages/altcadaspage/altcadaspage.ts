@@ -79,6 +79,8 @@ export class AltCadasPage {
                     .then((result: any) => {
                       toast.setMessage("Alteração do cadastro realizada com sucesso.");
                       toast.present();          
+                      this.usuProvider.nomeGlobal = review.nome;
+                      this.usuProvider.emailGlobal = review.email;
                       this.navCtrl.setRoot(HomePage); 
                     })
                     .catch((error: any) => {
@@ -92,6 +94,8 @@ export class AltCadasPage {
             .then((result: any) => {
               toast.setMessage("Alteração do cadastro realizada com sucesso.");
               toast.present();          
+              this.usuProvider.nomeGlobal = review.nome;
+              this.usuProvider.emailGlobal = review.email;
               this.navCtrl.setRoot(HomePage); 
             })
             .catch((error: any) => {
