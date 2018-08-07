@@ -79,7 +79,7 @@ export class CadUsuPage {
              this.usuProvider.getEmail(review.email)
              .then((result: any) => {
                   if (result.length != 0) {
-                      toast.setMessage("Email já cadastrado em outroxxx usuario.");
+                      toast.setMessage("Email já cadastrado em outro usuario.");
                       toast.present();
                   } else {
                     console.log(result.length)

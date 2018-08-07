@@ -20,13 +20,14 @@
   </ion-item>
   <ion-item>
       <ion-label floating>Senha</ion-label>
-      <ion-input type="password" [(ngModel)]="usupassword"></ion-input>
+      <ion-input type="password" maxlength="12" [(ngModel)]="usupassword"></ion-input>
    </ion-item>
-   <p>
-     <button ion-button full round (click)="acessar()">Acessar</button>
-   </p>
-   <p>
-      <button ion-button full round color="secondary" (click)="cadUsu()">Cadastar Usuario</button>
-   </p>
-   
+   <p> </p>
+   <div class="center">
+    <button ion-button round default="true" color="accent" style="width: 230px; height: 40px" (click)="acessar()">Acessar</button>
+   </div>
+   <p> </p>
+   <div class="center">
+      <button ion-button round color="secondary" style="width: 230px; height: 40px" (click)="cadUsu()">Cadastrar Usuario</button>
+   </div>
 </ion-content>

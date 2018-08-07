@@ -14,7 +14,6 @@ import { CadUsuPage } from '../../pages/cadusupage/cadusupage';
 export class AcessoPage {
 
   usuario: any;
-  //data: any;
 
   public usuemail: string;  
   public usupassword: string;  
@@ -49,9 +48,9 @@ export class AcessoPage {
                     toast.setMessage("Encontramos problemas no seu login. Verifique a senha e tente novamente.");
                     toast.present(); 
               } else {
-                    this.usuProvider.nomeGobal = this.usuario[0].nome;
-                    this.usuProvider.emailGobal = this.usuario[0].email;
-                    console.log("Gobal: " + this.usuProvider.nomeGobal)
+                    this.usuProvider.nomeGlobal = this.usuario[0].nome;
+                    this.usuProvider.emailGlobal = this.usuario[0].email;
+                    console.log("Global: " + this.usuProvider.nomeGlobal)
                     toast.setMessage("Usuário logado com sucesso.");
                     toast.present();
                     this.navCtrl.setRoot(HomePage);

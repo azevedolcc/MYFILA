@@ -27,27 +27,26 @@
  </ion-item>
 
  <ion-item>
-  <ion-label floating>Email Confirma</ion-label>
+  <ion-label floating>Confirme seu Email</ion-label>
   <ion-input type="text" [(ngModel)]="usuemailconf"></ion-input>
  </ion-item>
 
  <ion-item>
      <ion-label floating>Senha</ion-label>
-     <ion-input type="password" [(ngModel)]="usupassword"></ion-input>
-  </ion-item>
-
-  <ion-item>
-    <ion-label floating>Senha Confirma</ion-label>
-    <ion-input type="password" [(ngModel)]="usupasswordconf"></ion-input>
+     <ion-input type="password" maxlength="12" [(ngModel)]="usupassword"></ion-input>
  </ion-item>
 
  <ion-item>
-  <ion-label floating>Telefone</ion-label>
-  <ion-input type="text" [(ngModel)]="usutelefone"></ion-input>
+    <ion-label floating>Confirme sua Senha</ion-label>
+    <ion-input type="password" maxlength="12" [(ngModel)]="usupasswordconf"></ion-input>
  </ion-item>
-  
-  <p>
-    <button ion-button full round color="secondary" (click)="salvaUsu()">Confirma Cadastro</button>
-  </p>
+
+ <ion-item>
+    <ion-label floating>Telefone</ion-label>
+    <ion-input type="text" maxlength="11" pattern="([0-9]{11})" [(ngModel)]="usutelefone"></ion-input>
+ </ion-item>
+ <div class="center">
+    <button ion-button round color="secondary" style="width: 230px; height: 40px" (click)="salvaUsu()">Confirmar Cadastro</button>
+ </div>
 
 </ion-content>

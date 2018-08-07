@@ -25,8 +25,8 @@ export class AltSenPage {
               public navParams: NavParams,
               public toastCtrl: ToastController,
               private usuProvider: UsuarioProvider) {
-              this.usuname = this.usuProvider.nomeGobal
-              this.usuemail = this.usuProvider.emailGobal
+              this.usuname = this.usuProvider.nomeGlobal
+              this.usuemail = this.usuProvider.emailGlobal
               console.log("Gobal Altsenha: " + this.usuname + " " + this.usuemail)
   }
 
@@ -64,7 +64,7 @@ export class AltSenPage {
                       this.navCtrl.setRoot(HomePage);
                     })
                     .catch((error: any) => {
-                      toast.setMessage("Erro no cadastramento do usuário.");
+                      toast.setMessage("Erro na alteração da senha do usuário.");
                       toast.present();     
                     })
               }       

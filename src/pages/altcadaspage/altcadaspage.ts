@@ -14,9 +14,11 @@ export class AltCadasPage {
   public usuname: string;
   public usudatnasc: string;
   public usuemail: string;  
+  public usuemailant: string;
   public usuemailconf: string;
   public usupassword: string;  
   public usutelefone: string;
+  public maxDate: string;
   
   usuario: any;
 
@@ -26,13 +28,15 @@ export class AltCadasPage {
               public toastCtrl: ToastController,
               private usuProvider: UsuarioProvider) {
               let toast = this.toastCtrl.create({duration: 3000, position: 'middle'});
-              this.usuemail = this.usuProvider.emailGobal
+              this.usuemail = this.usuProvider.emailGlobal
               this.usuProvider.getEmail(this.usuemail)
               .then((data) => {
                   this.usuario = data
                   this.usuid = this.usuario[0].id
                   this.usuname = this.usuario[0].nome
                   this.usudatnasc = this.usuario[0].data_nasc
+                  this.usuemail = this.usuario[0].email
+                  this.usuemailant = this.usuario[0].email
                   this.usuemailconf = this.usuario[0].email
                   this.usupassword = this.usuario[0].password
                   this.usutelefone = this.usuario[0].telefone
@@ -47,8 +51,7 @@ export class AltCadasPage {
     console.log('ionViewDidLoad AltCadasPage');
   }
 
-
-  salvaAltCadas() {
+  salvaAltCadastro() {
 
     let toast = this.toastCtrl.create({duration: 3000, position: 'middle'});
 
@@ -62,18 +65,41 @@ export class AltCadasPage {
           password: this.usupassword, 
           telefone: this.usutelefone
         };
-
-        this.usuProvider.alterarSenha(review)
-        .then((result: any) => {
-          this.usuProvider.nomeGobal = this.usuname
-          toast.setMessage("Cadastro Alterado com sucesso.");
-          toast.present();          
-          this.navCtrl.setRoot(HomePage);
-        })
-        .catch((error: any) => {
-          toast.setMessage("Erro no cadastramento do usuário.");
-          toast.present();     
-        })
+        
+        if(review) {
+          if (this.usuemailant !== this.usuemailconf) {
+              this.usuProvider.getEmail(review.email)
+              .then((result: any) => {
+                  if (result.length != 0) {
+                      toast.setMessage("Email já cadastrado em outro usuario.");
+                      toast.present();
+                  } else {
+                    console.log(result.length)
+                    this.usuProvider.alterarSenha(review)
+                    .then((result: any) => {
+                      toast.setMessage("Alteração do cadastro realizada com sucesso.");
+                      toast.present();          
+                      this.navCtrl.setRoot(HomePage); 
+                    })
+                    .catch((error: any) => {
+                      toast.setMessage("Erro na alteração do cadastro.");
+                      toast.present();     
+                    })
+                  }
+              })
+          } else {
+            this.usuProvider.alterarSenha(review)
+            .then((result: any) => {
+              toast.setMessage("Alteração do cadastro realizada com sucesso.");
+              toast.present();          
+              this.navCtrl.setRoot(HomePage); 
+            })
+            .catch((error: any) => {
+              toast.setMessage("Erro na alteração do cadastro.");
+              toast.present();     
+            })
+          }
+        } 
       } else {
         toast.setMessage("Email diferentes, favor digitar novamente.");
         toast.present(); 

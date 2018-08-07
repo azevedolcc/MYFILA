@@ -6,29 +6,17 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class UsuarioProvider {
 
-  public nomeGobal: string;
-  public emailGobal: string;
+  public nomeGlobal: string;
+  public emailGlobal: string;
   
   public data: any;
   public url: any;
-  public usuNCad: boolean;
 
   constructor(public http: Http) {
     console.log('Hello UsuarioProvider Provider');
   }
 
   getEmail(email: string) {
-    
-    /*return new Promise((resolve, reject) => {
-      this.url = 'http://localhost:3000/usuario_email/' + email
-      this.http.get(this.url)
-           .subscribe(result => {
-            resolve(result.json());
-      },
-      (error) => {
-            reject(error.json());
-      })       
-    }); */
     
     return new Promise((resolve, reject)  => {
       this.url = 'http://localhost:3000/usuario_email/' + email
@@ -78,27 +66,5 @@ export class UsuarioProvider {
       })       
     });     
    };
-
    
-
-  loginUsuario(email: string, password: string) {
-    console.log("Login email: " + email + " Passw: " + password)
-    return new Promise((resolve, reject) => {
-   
-      var data ={
-        email: email,
-        password: password
-      };
-
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json')
-      this.http.post('http://localhost:3000/usuario', JSON.stringify(data), { headers: headers })
-          .subscribe(result => {
-          resolve(result.json());
-      },
-      (error) => {
-          reject(error.json());
-      })       
-    });     
-  }
 }  

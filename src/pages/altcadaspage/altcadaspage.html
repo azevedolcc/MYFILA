@@ -10,16 +10,16 @@
 
 <ion-content padding>
 
-  <ion-item>
+ <ion-item>
     <ion-label floating>Nome</ion-label>
     <ion-input type="text" [(ngModel)]="usuname"></ion-input>
  </ion-item>
 
  <ion-item>
-  <ion-label floating>Data Nascimento</ion-label>
-  <ion-datetime displayFormat='DD/MM/YYYY' [(ngModel)]="usudatnasc" doneText="Feito"
+    <ion-label floating>Data Nascimento</ion-label>
+    <ion-datetime displayFormat='DD/MM/YYYY' [(ngModel)]="usudatnasc" doneText="Feito"
                 cancelText="Cancelar" [max]="maxDate">
-  </ion-datetime>
+    </ion-datetime>
  </ion-item>
 
  <ion-item>
@@ -28,17 +28,17 @@
  </ion-item>
 
  <ion-item>
-  <ion-label floating>Email Confirma</ion-label>
-  <ion-input type="text" [(ngModel)]="usuemailconf"></ion-input>
- </ion-item>
+   <ion-label floating>Email Confirma</ion-label>
+   <ion-input type="text" [(ngModel)]="usuemailconf"></ion-input>
+ </ion-item> 
 
  <ion-item>
-  <ion-label floating>Telefone</ion-label>
-  <ion-input type="text" [(ngModel)]="usutelefone"></ion-input>
+   <ion-label floating>Telefone</ion-label>
+   <ion-input type="text"  pattern="\(\d{2}\)\d{5}-\d{4}" [(ngModel)]="usutelefone"></ion-input>
  </ion-item>
+ <p> </p>
+ <div class="center">
+    <button ion-button round style="width: 310px; height: 40px" (click)="salvaAltCadastro()">Confirmar Alteração de Cadastro</button>
+ </div>
   
-  <p>
-    <button ion-button full round color="secondary" (click)="salvaAltCadas()">Confirma Cadastro</button>
-  </p>
-
 </ion-content>

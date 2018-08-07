@@ -12,8 +12,8 @@ export class HomePage {
   public usunameHome: string;
 
   constructor(public navCtrl: NavController, private usuProvider: UsuarioProvider) {
-              this.usunameHome = this.usuProvider.nomeGobal
-              console.log("Gobal Home: " + this.usunameHome)
+              this.usunameHome = this.usuProvider.nomeGlobal
+              console.log("Global Home: " + this.usunameHome)
 
   }
 }
