@@ -38,7 +38,7 @@ export class AcessoPage {
     let toast = this.toastCtrl.create({duration: 3000, position: 'middle'});
 
     console.log( "Logar ===> " + this.usuemail + " -> " + this.usupassword);
-    if (this.usuemail !== null && this.usupassword !== null) {
+    if (this.usuemail !== null && this.usupassword !== null && this.usuemail !== '' && typeof this.usuemail !== "undefined") {
       console.log( "Vou chamar o metodo para Logar ===> " )
       this.usuProvider.getEmail(this.usuemail).then((data) => {
               this.usuario = data
@@ -57,16 +57,12 @@ export class AcessoPage {
               }       
           })
           .catch((error: any) => {
-            console.log(typeof this.usuemail == "undefined")
-            console.log(this.usuemail)
-              if (typeof this.usuemail == "undefined") {
-                   toast.setMessage("Email e senha devem ser preenchidos.");
-                   toast.present(); 
-              } else {
-                   toast.setMessage("Não foi encontrado usuário com login " + this.usuemail);
-                   toast.present();  
-              }        
+                    toast.setMessage("Não foi encontrado usuário com login " + this.usuemail);
+                    toast.present();          
           })
+    } else {
+      toast.setMessage("Email e senha devem ser preenchidos.");
+      toast.present(); 
     }
   }
   

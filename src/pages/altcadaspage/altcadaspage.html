@@ -15,11 +15,16 @@
     <ion-input type="text" [(ngModel)]="usuname"></ion-input>
  </ion-item>
 
- <ion-item>
+ <!--ion-item>
     <ion-label floating>Data Nascimento</ion-label>
     <ion-datetime displayFormat='DD/MM/YYYY' [(ngModel)]="usudatnasc" doneText="Feito"
                 cancelText="Cancelar" [max]="maxDate">
     </ion-datetime>
+ </ion-item> -->
+ <h3>{{usudatnasc}}</h3>
+ <ion-item>
+    <ion-label class="dateLabel">Data Nascimento</ion-label>
+    <ion-input type="date" [(ngModel)]="usudatnasc"></ion-input>
  </ion-item>
  
  <ion-item>

@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { AppMaskerModule } from 'brmasker-ionic';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -24,9 +23,8 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
     ListPage,
     CadUsuPage,
     AltSenPage,
-    AltCadasPage,
-    AppMaskerModule
-  ],
+    AltCadasPage
+   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
