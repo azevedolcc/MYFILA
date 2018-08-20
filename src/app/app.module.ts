@@ -1,7 +1,9 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule, Http } from '@angular/http';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { DatasPage } from './../pages/datas/datas';
+import { HorasDispPage } from './../pages/horas-disp/horas-disp'
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -15,6 +17,9 @@ import { CadUsuPage } from '../pages/cadusupage/cadusupage';
 import { AltCadasPage } from '../pages/altcadaspage/altcadaspage';
 
 import { UsuarioProvider } from '../providers/usuario/usuario';
+import { ProfissionalProvider } from '../providers/profissional/profissional';
+import { AgendaProvider } from '../providers/agenda/agenda';
+import { MovAgendaProvider } from '../providers/mov-agenda/mov-agenda';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,9 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
     ListPage,
     CadUsuPage,
     AltSenPage,
-    AltCadasPage
+    AltCadasPage,
+    DatasPage,
+    HorasDispPage
    ],
   imports: [
     BrowserModule,
@@ -37,13 +44,18 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
     ListPage,
     CadUsuPage,
     AltSenPage,
-    AltCadasPage
+    AltCadasPage,
+    DatasPage,
+    HorasDispPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    UsuarioProvider
+    UsuarioProvider,
+    ProfissionalProvider,
+    AgendaProvider,
+    MovAgendaProvider
   ]
 })
 export class AppModule { 

@@ -8,6 +8,7 @@ export class UsuarioProvider {
 
   public nomeGlobal: string;
   public emailGlobal: string;
+  public idGlobal: string;
   
   public data: any;
   public url: any;

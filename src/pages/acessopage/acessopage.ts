@@ -27,6 +27,7 @@ export class AcessoPage {
               public toastCtrl: ToastController) {
 
               this.menu.swipeEnable(false);
+
   }
 
   ionViewDidLoad() {
@@ -35,7 +36,7 @@ export class AcessoPage {
 
   acessar() {
 
-    let toast = this.toastCtrl.create({duration: 3000, position: 'middle'});
+    let toast = this.toastCtrl.create({duration: 3000, position: 'botton'});
 
     console.log( "Logar ===> " + this.usuemail + " -> " + this.usupassword);
     if (this.usuemail !== null && this.usupassword !== null && this.usuemail !== '' && typeof this.usuemail !== "undefined") {
@@ -50,6 +51,7 @@ export class AcessoPage {
               } else {
                     this.usuProvider.nomeGlobal = this.usuario[0].nome;
                     this.usuProvider.emailGlobal = this.usuario[0].email;
+                    this.usuProvider.idGlobal = this.usuario[0].id;
                     console.log("Global: " + this.usuProvider.nomeGlobal)
                     toast.setMessage("Usuário logado com sucesso.");
                     toast.present();

@@ -36,7 +36,7 @@ export class AltSenPage {
 
   AltSenha(){ 
 
-    let toast = this.toastCtrl.create({duration: 3000, position: 'middle'});
+    let toast = this.toastCtrl.create({duration: 3000, position: 'botton'});
 
     if (this.usupasswordatu !== null && this.usupasswordnova !== null && this.usupasswordconf) {
       if (this.usupasswordnova == this.usupasswordconf) {

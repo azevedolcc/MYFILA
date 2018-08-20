@@ -46,7 +46,7 @@ export class CadUsuPage {
       telefone: this.usutelefone
     };
 
-    let toast = this.toastCtrl.create({duration: 3000, position: 'middle'});
+    let toast = this.toastCtrl.create({duration: 3000, position: 'botton'});
     console.log(this.usuemail + ' ' + this.usuemailconf);
     this.passwIgual = true;
     if (this.usupassword !== this.usupasswordconf) {

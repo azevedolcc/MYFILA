@@ -53,7 +53,7 @@ export class AltCadasPage {
 
   salvaAltCadastro() {
 
-    let toast = this.toastCtrl.create({duration: 3000, position: 'middle'});
+    let toast = this.toastCtrl.create({duration: 3000, position: 'botton'});
 
     if (this.usuname !== null && this.usudatnasc !== null && this.usuemail !== null && this.usutelefone !== null) {
       if (this.usuemail == this.usuemailconf) {

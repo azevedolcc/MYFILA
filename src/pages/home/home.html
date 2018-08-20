@@ -3,14 +3,20 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Selecione Fila</ion-title>
+    <ion-title>Selecione</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <h2>{{ usunameHome }}</h2> 
-  </ion-item>
-  <p>Geral</p>
-  <p>Prioridade</p>
+  
+  <ion-list>
+  
+     <ion-item *ngFor="let profd of prof" (click)="exibirDatas(profd)">
+ 
+        <h2>{{profd.Nome}}</h2>
+        <p>({{profd.Descricao}})</p>
+ 
+     </ion-item>
+  </ion-list>
+   
 </ion-content>
