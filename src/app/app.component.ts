@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 //import { CadUsuPage } from '../pages/cadusupage/cadusupage';
 import { AltSenPage } from '../pages/altsenpage/altsenpage';
 import { AltCadasPage } from '../pages/altcadaspage/altcadaspage';
+import { UsuAgendaPage } from '../pages/usu-agenda/usu-agenda';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,6 +27,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Inicio', component: HomePage },
+      { title: 'Meus Agendamentos', component: UsuAgendaPage },
       { title: 'Alterar Cadastro', component: AltCadasPage },
       { title: 'Alterar Senha', component: AltSenPage }
     ];

@@ -20,6 +20,7 @@ import { UsuarioProvider } from '../providers/usuario/usuario';
 import { ProfissionalProvider } from '../providers/profissional/profissional';
 import { AgendaProvider } from '../providers/agenda/agenda';
 import { MovAgendaProvider } from '../providers/mov-agenda/mov-agenda';
+import { UsuAgendaPage } from '../pages/usu-agenda/usu-agenda';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MovAgendaProvider } from '../providers/mov-agenda/mov-agenda';
     AltSenPage,
     AltCadasPage,
     DatasPage,
-    HorasDispPage
+    HorasDispPage,
+    UsuAgendaPage
    ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import { MovAgendaProvider } from '../providers/mov-agenda/mov-agenda';
     AltSenPage,
     AltCadasPage,
     DatasPage,
-    HorasDispPage
+    HorasDispPage,
+    UsuAgendaPage
   ],
   providers: [
     StatusBar,

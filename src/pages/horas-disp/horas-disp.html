@@ -1,8 +1,8 @@
 <ion-header>
 
   <ion-navbar color="secondary">
-    <ion-title>Horários Disponíveis</ion-title>
-    <ion-title>Agenda de {{ nomeProfHome }}</ion-title>
+    <ion-title>Agenda - Horários Disponíveis</ion-title>
+    <ion-title>{{ nomeProfHome }}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -11,7 +11,14 @@
 <ion-content padding>
 
    <ion-item>
-      <b> Data: {{ dataSelec | date: 'dd/MM/yyyy' }} ({{ diaSemana }})</b>
+      <b> Data: </b>
+      <p> </p>
+      <b>{{ dataSelec | date: 'dd/MM/yyyy' }} ({{ descDiaSem }})</b>
+
+      <ion-thumbnail item-start> 
+        <img src="assets/imgs/Agenda1.jpg"/>
+      </ion-thumbnail>  
+
    </ion-item>
 
    <ion-list>

@@ -36,7 +36,7 @@ export class AcessoPage {
 
   acessar() {
 
-    let toast = this.toastCtrl.create({duration: 3000, position: 'botton'});
+    let toast = this.toastCtrl.create({duration: 2000, position: 'botton'});
 
     console.log( "Logar ===> " + this.usuemail + " -> " + this.usupassword);
     if (this.usuemail !== null && this.usupassword !== null && this.usuemail !== '' && typeof this.usuemail !== "undefined") {

@@ -1,0 +1,49 @@
+<!--
+  Generated template for the UsuAgendaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Meus Agendamentos</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+   <ion-item *ngFor="let t of totagenda">
+     <h1> {{ t.nome }} </h1>
+     <b *ngIf="t.tot_agendas == 1" > Tem {{ t.tot_agendas }} agendamento</b>
+     <b *ngIf="t.tot_agendas > 1" > Tem {{ t.tot_agendas }} agendamentos</b>
+     
+     <ion-thumbnail item-start> 
+        <img src="assets/imgs/Agenda2.jpg"/>
+     </ion-thumbnail>  
+   </ion-item>
+
+   <ion-list>
+    <ion-item-sliding *ngFor="let agenda of agendas">
+
+      <ion-item>
+        <h2>{{ agenda.p_nome }}</h2>
+        <p>({{ agenda.Descricao }})</p>
+        <h2>Data/Hora: {{ agenda.data_movimento | date: 'dd/MM/yyyy' }} {{ agenda.hora_atendimento }}</h2>
+      </ion-item>
+
+      <ion-item-options side='left'>
+         <button ion-button color="danger" (click)="removerAgenda(agenda)">
+           <ion-icon name="trash"></ion-icon> 
+           Delete
+         </button>
+         
+      </ion-item-options>
+
+    </ion-item-sliding>
+   </ion-list>
+</ion-content>

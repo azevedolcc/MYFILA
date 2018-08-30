@@ -35,11 +35,11 @@ export class AgendaProvider {
     });
   }
 
-  getHorasAgenda(idProf) {
- 
+  getHorasAgenda(dados) {
+    console.log("Antes do GET Dados: " + dados.dataSelec + ' ' + dados.idProfSelec + ' ' + dados.diaSemSel);
     return new Promise(resolve => {
-      console.log('Antes do GET Horas Agenda ')
-      this.url = 'http://localhost:3000/agenda_horas/' + idProf 
+      //console.log('Antes do GET Horas Agenda ' + dados + ' ' + JSON.stringify(dados))
+      this.url = 'http://localhost:3000/agenda_horas/' + dados.idProfSelec + '&' + dados.diaSemSel + '&' + dados.dataSelec
       console.log('URL Agenda Horas: ' + this.url)
       this.http.get(this.url)
         .map(res => res.json()) 
@@ -47,7 +47,11 @@ export class AgendaProvider {
           this.data = data;
           resolve(this.data);
         });
-    });
+    }); 
+
+    
+
+
   }
 
 }

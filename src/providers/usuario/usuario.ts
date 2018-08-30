@@ -25,7 +25,6 @@ export class UsuarioProvider {
         .map(res => res.json())
         .subscribe(data => {
           this.data = data;
-          //console.log('Data prov email: ' + this.data)
           resolve(this.data);
         }, 
         (error) => {
@@ -67,5 +66,34 @@ export class UsuarioProvider {
       })       
     });     
    };
-   
+
+   getTotalAgenda(id: string) {
+ 
+    return new Promise (resolve => {
+      console.log('Antes do GET Total Agenda do usuário => ' + id)
+      this.url = 'http://localhost:3000/usuario_agenda1/' + id
+      console.log('URL: ' + this.url)
+      this.http.get(this.url)
+        .map(res => res.json()) 
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  }
+
+  getAgenda(id: string) {
+ 
+    return new Promise (resolve => {
+      console.log('Antes do GET Agenda do usuário => ' + id )
+      this.url = 'http://localhost:3000/usuario_agenda2/' + id
+      console.log('URL: ' + this.url)
+      this.http.get(this.url)
+        .map(res => res.json()) 
+        .subscribe(data => {
+          this.data = data;
+          resolve(this.data);
+        });
+    });
+  } 
 }  

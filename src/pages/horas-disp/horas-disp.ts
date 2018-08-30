@@ -1,3 +1,4 @@
+import { DatasPage } from './../datas/datas';
 import { HomePage } from './../home/home';
 import { MovAgendaProvider } from './../../providers/mov-agenda/mov-agenda';
 import { UsuarioProvider } from './../../providers/usuario/usuario';
@@ -19,7 +20,7 @@ export class HorasDispPage {
   public descProfHome: string; 
   public dataSelec: Date;
   public horaSelec: string;
-  public diaSemana: string;
+  public descDiaSem: string;
   horas: any;
 
   constructor(public navCtrl: NavController, 
@@ -34,42 +35,51 @@ export class HorasDispPage {
               this.idProfHome = this.profProvider.idProfGlobal
               this.usuIdHome = this.usuProvider.idGlobal
               this.dataSelec = new Date(this.agendaProvider.dataAgendaGlobal)
-              console.log("Param 2: " + this.dataSelec + ' / ' + this.idProfHome + ' / ' + this.usuIdHome)
-              
+              console.log("Param 2: " + this.dataSelec + ' / ' + this.idProfHome + ' / ' + this.usuIdHome
+                           + ' ' + this.navParams.data.diasemana
+                           + ' ' + this.navParams.data.diasem )
+              this.descDiaSem = this.navParams.data.diasem 
   }
   
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HorasDispPage' + " => " + this.navParams.data.profIdParam + ' ' + this.idProfHome
-                + ' ' + this.agendaProvider.dataAgendaGlobal);
+    console.log('ionViewDidLoad HorasDispPage' + " => " 
+                 + this.navParams.data.profIdParam + ' ' + this.idProfHome
+                 + ' ' + this.agendaProvider.dataAgendaGlobal
+                 + ' ' + this.navParams.data.datadisp
+                 + ' ' + this.navParams.data.diasemana
+                 + ' ' + this.navParams.data.diasem);
 
-    this.dataSelec = new Date(this.agendaProvider.dataAgendaGlobal);
-    //var dia_sem = this.dataSelec.getDay();
-    console.log('Display: ' + this.dataSelec + ' ' + this.navParams.data.profIdParam)
-
-    let semana = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado']
-    //this.dataSelec = (this.dataSelec.substring(0, 10));
-    //let dataString  = (this.dataSelec.substring(0, 10)).split("-");
-    //let datast = new Date(dataString[0], (dataString[1]-1), dataString[2]);
-    this.dataSelec.setDate(this.dataSelec.getDate() + 1);
-    this.diaSemana = semana[this.dataSelec.getDay()]; 
-    console.log('Dia semana: ' + this.dataSelec + this.diaSemana)
-
+    this.descDiaSem = this.navParams.data.diasem                 
+   
     if (this.navParams.data.profIdParam) {
       this.getHoras(this.navParams.data.profIdParam);
     }
   }
 
-  private getHoras(idProf) {
-    console.log("Horas-disp: " + idProf)
-    this.agendaProvider.getHorasAgenda(idProf).then((data) => {
+  public getHoras(idProf) {
+    
+    let dados = { dataSelec: this.navParams.data.datadisp,
+                  idProfSelec: this.navParams.data.profIdParam,
+                  diaSemSel: this.navParams.data.diasemana
+    };
+    console.log('getHorasAgenda - HD =>' 
+                 + ' ' + this.navParams.data.profIdParam + ' ' + this.navParams.data.datadisp
+                 + ' ' + this.navParams.data.diasemana + ' ' + this.navParams.data.diasem + ' ' + dados);
+    this.agendaProvider.getHorasAgenda(dados).then((data) => {
       console.log(data)
       this.horas = data;
+      console.log("HD : " + data + ' ' + this.horas.length) 
+      if (this.horas.length == 0) {
+        let toast = this.toastCtrl.create({duration: 2000, position: 'middle'})
+        toast.setMessage("Não existe horário disponível para esta data.");
+        toast.present();          
+        this.navCtrl.setRoot(DatasPage, {profId: idProf});  
+      };
     });
   }
 
   marcarHora(idProf, horaSelec) {
     console.log("Marcar Hora: " + idProf + ' ' + horaSelec + ' ' + this.dataSelec + ' ' + this.usuIdHome)
-
     let movAgenda = {
         dataSelec: this.dataSelec,
         idProfSelec: idProf,
@@ -77,7 +87,7 @@ export class HorasDispPage {
         idUsuSelec: this.usuIdHome
     };
 
-    let toast = this.toastCtrl.create({duration: 3000, position: 'botton'});
+    let toast = this.toastCtrl.create({duration: 2000, position: 'middle'});
 
     if(movAgenda) {
         this.movAgendaProvider.criarMovAgenda(movAgenda)

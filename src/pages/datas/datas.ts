@@ -58,27 +58,16 @@ export class DatasPage {
     this.agendaProvider.getDatasAgenda(id).then((data) => {
       console.log(data);
       this.datas = data;
+      let semana = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado']
+      for(var i=0, len = this.datas.length; i < len; i++) {
+        this.datas[i].diaSem = semana[this.datas[i].diasemana]; 
+        console.log(this.datas[i].diaSem);
+     }
     });
   }
 
-  exibirHoras(profIdParam, datadisp) {
-    datadisp = (datadisp.substring(0, 10));
-    console.log("Datadisp: " + datadisp)
-    let dataString  = (datadisp.substring(0, 10)).split("-");
-    console.log("DataStr: " + dataString)
-      /* Define a data com os valores separados */
-    let datast = new Date(dataString[0], (dataString[1]-1), dataString[2]);
-    console.log(dataString[0] + ' ' +  (dataString[1]-1) + ' ' + dataString[2]);
-    console.log( "Ver 0: " + datast );
-    console.log( "Ver 1: " + datast.toString() );
-    console.log( "Ver 2: " + datast.toLocaleDateString("pt-BR") );
-    this.dia_sem = datast.getDay();
-    console.log("Data Selec: " + datadisp + " / " + profIdParam + " / " + this.dia_sem)
-    let dadosPesq = {
-      idProf: this.profIdParam,
-      dataSelec: datadisp,
-      diaSem: this.dia_sem
-    };
+  exibirHoras(profIdParam, datadisp, diasemana, diasem) {
+    console.log("Data Selec: " + datadisp + " / " + profIdParam + " / " + diasemana + " / " + diasem )
     this.agendaProvider.dataAgendaGlobal = datadisp
-    this.navCtrl.push(HorasDispPage, {profIdParam}); }
+    this.navCtrl.push(HorasDispPage, {profIdParam, datadisp, diasemana, diasem}); }
 }

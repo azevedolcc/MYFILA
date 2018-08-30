@@ -15,6 +15,12 @@
  
         <h2>{{profd.Nome}}</h2>
         <p>({{profd.Descricao}})</p>
+        <ion-avatar item-start *ngIf="profd.Descricao !== 'Manicure'" > 
+          <img src="assets/imgs/Prof_Cabelo2.png"/>
+        </ion-avatar>  
+        <ion-avatar item-start *ngIf="profd.Descricao == 'Manicure'" > 
+          <img src="assets/imgs/Manicure.jpg"/>
+        </ion-avatar>
  
      </ion-item>
   </ion-list>

@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class MovAgendaProvider {
+  public url: any;
 
   constructor(public http: Http) {
     console.log('Hello MovAgendaProvider Provider');
@@ -31,4 +32,17 @@ export class MovAgendaProvider {
       })       
     });     
    };
+
+
+   removerMovAgenda(mov_id){
+ 
+    console.log('ParamProv Mov Agenda Del: ' + mov_id)
+    
+    this.url = 'http://localhost:3000/mov_agenda/' + mov_id
+    this.http.delete(this.url).subscribe((res) => {
+      console.log(res.json());
+    });   
+ 
+  }
+
 }
